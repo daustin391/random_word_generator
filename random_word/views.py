@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.utils.crypto import get_random_string
 
 
 def route(request):
@@ -6,5 +7,14 @@ def route(request):
 
 
 def random(request):
-    request.session["counter"] = 1
+    if "counter" in request.session:
+        request.session["counter"] += 1
+    else:
+        request.session["counter"] = 1
+    request.session['word'] = get_random_string(length=14)    
     return render(request, "index.html")
+
+
+def reset(request):
+    request.session.clear()
+    return redirect("/random_word")

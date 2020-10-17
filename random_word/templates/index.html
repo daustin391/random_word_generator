@@ -11,11 +11,11 @@
 
 <body>
     <main>
-        <h1>Random Word (attempt #{{counter}})</h1>
+        <h1>Random Word (attempt # {{request.session.counter}})</h1>
         <p>
-            {#{}#}
+            {{request.session.word}}
         </p>
-        <button>Generate</button>
+        <a href="./random_word">Generate</a>
     </main>
 </body>
 
