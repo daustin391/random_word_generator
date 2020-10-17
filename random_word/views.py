@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-# Create your views here.
+
+def route(request):
+    return redirect("/random_word")
+
+
+def random(request):
+    request.session["counter"] = 1
+    return render(request, "index.html")
